@@ -1,1 +1,1 @@
-# top-etch_a_sketch
+Building a sketchpad to show DOM manipulations skills
