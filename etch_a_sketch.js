@@ -3,8 +3,8 @@ let rows = 16;
 let columns = 16;
 
 const sketchArea = document.querySelector("#sketchArea");
-sketchArea.style.width = `${GRIDSIZE}`;
-sketchArea.style.height = `${GRIDSIZE}`;
+sketchArea.style.width = `${GRIDSIZE}px`;
+sketchArea.style.height = `${GRIDSIZE}px`;
 
 function createGridCells(){
     for (let i = 0; i < (rows * columns); i++){
