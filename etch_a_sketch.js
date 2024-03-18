@@ -1,6 +1,5 @@
 const GRIDSIZE = 600;
-let rows = 16;
-let columns = 16;
+let squaresPerSide = 16;
 
 const sketchArea = document.querySelector("#sketchArea");
 sketchArea.style.width = `${GRIDSIZE}px`;
@@ -13,12 +12,13 @@ function setBackgroundColor(){
     let randomColour = "rgb(" + randomRed + "," + randomGreen + "," + randomBlue + ")";
     this.style.backgroundColor = randomColour;
 }
-function createGridCells(){
-    for (let i = 0; i < (rows * columns); i++){
+function createGridCells(squaresPerSide){
+    const numOfSquares = (squaresPerSide * squaresPerSide);
+    for (let i = 0; i < (numOfSquares); i++){
         const gridCell = document.createElement("div");
 
-        gridCell.style.width = `${(GRIDSIZE/columns) -2}px`;
-        gridCell.style.height = `${(GRIDSIZE/rows) -2}px`;
+        gridCell.style.width = `${(GRIDSIZE/squaresPerSide) -2}px`;
+        gridCell.style.height = `${(GRIDSIZE/squaresPerSide) -2}px`;
         gridCell.classList.add("cell");
 
         sketchArea.appendChild(gridCell);
@@ -26,4 +26,20 @@ function createGridCells(){
     }
 }
 
-createGridCells()
+function promptForGridsize(){
+    let numSquaresPerSize = prompt("enter required gridsize with max being 100");
+    if (numSquaresPerSize !== null && !isNaN(numSquaresPerSize) && numSquaresPerSize > 0 && numSquaresPerSize <= 100){
+        squaresPerSide = parseInt(numSquaresPerSize);
+        sketchArea.innerHTML = "";
+        createGridCells(squaresPerSide);
+    }
+    else{
+        alert("Please enter a valid number between 1 and 100.");
+        promptForGridsize()
+    } 
+}
+
+
+const btn = document.querySelector("#btn");
+btn.addEventListener('click', promptForGridsize);
+createGridCells(squaresPerSide)
