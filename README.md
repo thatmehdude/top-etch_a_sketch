@@ -1,1 +1,2 @@
-Building a sketchpad to show DOM manipulations skills
+Sketch pad of square grids
+Can set gridsizes from 1-100
